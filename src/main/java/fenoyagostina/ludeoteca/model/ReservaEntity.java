@@ -49,6 +49,9 @@ public class ReservaEntity {
         if(idPublico==null){
             idPublico=UUID.randomUUID();
         }
+        if(fechaReserva==null){
+            fechaReserva=LocalDate.now();
+        }
         if(estado==null){
             estado=EstadoReserva.CONFIRMADA;
         }
