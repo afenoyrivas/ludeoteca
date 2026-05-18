@@ -1,4 +1,4 @@
-package fenoyagostina.ludeoteca.dto;
+package fenoyagostina.ludeoteca.dto.request;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

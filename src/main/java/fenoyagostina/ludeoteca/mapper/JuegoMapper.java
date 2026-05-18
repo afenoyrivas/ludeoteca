@@ -1,7 +1,7 @@
 package fenoyagostina.ludeoteca.mapper;
 
-import fenoyagostina.ludeoteca.dto.JuegoRequestDto;
-import fenoyagostina.ludeoteca.dto.JuegoResponseDto;
+import fenoyagostina.ludeoteca.dto.request.JuegoRequestDto;
+import fenoyagostina.ludeoteca.dto.response.JuegoResponseDto;
 import fenoyagostina.ludeoteca.model.JuegoEntity;
 import org.mapstruct.Mapper;
 

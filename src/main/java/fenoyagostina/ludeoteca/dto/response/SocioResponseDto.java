@@ -1,4 +1,4 @@
-package fenoyagostina.ludeoteca.dto;
+package fenoyagostina.ludeoteca.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

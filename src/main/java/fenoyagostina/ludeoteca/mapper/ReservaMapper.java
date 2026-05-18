@@ -1,7 +1,7 @@
 package fenoyagostina.ludeoteca.mapper;
 
-import fenoyagostina.ludeoteca.dto.ReservaRequestDto;
-import fenoyagostina.ludeoteca.dto.ReservaResponseDto;
+import fenoyagostina.ludeoteca.dto.request.ReservaRequestDto;
+import fenoyagostina.ludeoteca.dto.response.ReservaResponseDto;
 import fenoyagostina.ludeoteca.model.ReservaEntity;
 import org.mapstruct.Mapper;
 

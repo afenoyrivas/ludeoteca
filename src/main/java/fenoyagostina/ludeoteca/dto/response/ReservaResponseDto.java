@@ -1,4 +1,4 @@
-package fenoyagostina.ludeoteca.dto;
+package fenoyagostina.ludeoteca.dto.response;
 
 import fenoyagostina.ludeoteca.model.EstadoReserva;
 import lombok.Builder;

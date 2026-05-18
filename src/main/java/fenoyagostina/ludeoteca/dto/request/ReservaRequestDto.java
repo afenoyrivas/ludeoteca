@@ -1,4 +1,4 @@
-package fenoyagostina.ludeoteca.dto;
+package fenoyagostina.ludeoteca.dto.request;
 
 import fenoyagostina.ludeoteca.model.JuegoEntity;
 import fenoyagostina.ludeoteca.model.SocioEntity;
