@@ -1,9 +1,6 @@
 package fenoyagostina.ludeoteca.dto.request;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.Data;
 
@@ -18,7 +15,7 @@ public class JuegoRequestDto {
     private String categoria;
 
     @NotNull
-    @Positive
+    @PositiveOrZero
     private Integer edadMinima;
 
     @NotNull
