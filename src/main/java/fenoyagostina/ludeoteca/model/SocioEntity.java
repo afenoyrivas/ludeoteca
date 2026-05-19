@@ -27,10 +27,10 @@ public class SocioEntity {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "dni", nullable = false)
+    @Column(name = "dni", nullable = false, unique = true)
     private String dni;
 
     @Column(name = "fecha_alta", nullable = false)
