@@ -20,27 +20,27 @@ public class SocioService {
     private SocioRepository socioRepository;
     private SocioMapper socioMapper;
 
-    List<SocioResponseDto> findAll(){
+    public List<SocioResponseDto> findAll(){
         return socioRepository.findAll().stream()
                 .map(socioMapper::toDto)
                 .collect(Collectors.toList());
     }
 
-    SocioResponseDto findById(Integer socioId ){
+    public SocioResponseDto findById(Integer socioId){
         return socioRepository.findById(socioId)
                 .map(socioMapper::toDto)
                 .orElseThrow(EntityNotFoundException::new);
 
     }
 
-    SocioResponseDto findByDni(String dni){
+    public SocioResponseDto findByDni(String dni){
         return socioRepository.findByDni(dni)
                 .map(socioMapper::toDto)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
     @Transactional
-    SocioResponseDto save(SocioRequestDto request){
+    public SocioResponseDto save(SocioRequestDto request){
         if(socioRepository.existsByDni(request.getDni())){
             throw new DniYaExisteException(request.getDni());
         }
