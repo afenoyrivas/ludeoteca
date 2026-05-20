@@ -12,43 +12,43 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 public class SocioService {
 
-    private SocioRepository socioRepository;
-    private SocioMapper socioMapper;
+    private SocioRepository repository;
+    private SocioMapper mapper;
 
     public List<SocioResponseDto> findAll(){
-        return socioRepository.findAll().stream()
-                .map(socioMapper::toDto)
+        return repository.findAll().stream()
+                .map(mapper::toDto)
                 .collect(Collectors.toList());
     }
 
-    public SocioResponseDto findById(Integer socioId){
-        return socioRepository.findById(socioId)
-                .map(socioMapper::toDto)
+    public SocioResponseDto findByIdPublico(UUID idPublico){
+        return repository.findByIdPublico(idPublico)
+                .map(mapper::toDto)
                 .orElseThrow(EntityNotFoundException::new);
-
     }
 
     public SocioResponseDto findByDni(String dni){
-        return socioRepository.findByDni(dni)
-                .map(socioMapper::toDto)
+        return repository.findByDni(dni)
+                .map(mapper::toDto)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
     @Transactional
     public SocioResponseDto save(SocioRequestDto request){
-        if(socioRepository.existsByDni(request.getDni())){
+        if(repository.existsByDni(request.getDni())){
             throw new DniYaExisteException(request.getDni());
         }
-        if(socioRepository.existsByEmail(request.getEmail())){
+        if(repository.existsByEmail(request.getEmail())){
             throw new EmailYaExisteException(request.getEmail());
         }
-        SocioEntity entity = socioMapper.toEntity(request);
-        socioRepository.save(entity);
-        return socioMapper.toDto(entity);
+        SocioEntity entity = mapper.toEntity(request);
+        repository.save(entity);
+        return mapper.toDto(entity);
     }
 }
