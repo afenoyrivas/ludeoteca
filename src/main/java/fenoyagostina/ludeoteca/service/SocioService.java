@@ -18,8 +18,13 @@ import java.util.stream.Collectors;
 @Service
 public class SocioService {
 
-    private SocioRepository repository;
-    private SocioMapper mapper;
+    private final SocioRepository repository;
+    private final SocioMapper mapper;
+
+    public SocioService(SocioRepository repository, SocioMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
 
     public List<SocioResponseDto> findAll(){
         return repository.findAll().stream()
