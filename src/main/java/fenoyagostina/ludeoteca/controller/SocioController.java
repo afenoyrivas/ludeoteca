@@ -6,6 +6,7 @@ import fenoyagostina.ludeoteca.service.SocioService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -32,14 +33,14 @@ public class SocioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SocioResponseDto> getById(@PathVariable @NotNull UUID id){
-        SocioResponseDto socio = service.findByIdPublico(id);
+    public ResponseEntity<SocioResponseDto> getById(@PathVariable UUID id){
+        SocioResponseDto socio = service.getByIdPublico(id);
         return ResponseEntity.status(HttpStatus.OK).body(socio);
     }
 
     @GetMapping("/{dni}")
-    public ResponseEntity<SocioResponseDto> getByDni(@PathVariable String dni){
-        SocioResponseDto socio = service.findByDni(dni);
+    public ResponseEntity<SocioResponseDto> getByDni(@PathVariable @Size(min = 9, max = 9) String dni){
+        SocioResponseDto socio = service.getByDni(dni);
         return ResponseEntity.status(HttpStatus.OK).body(socio);
     }
 

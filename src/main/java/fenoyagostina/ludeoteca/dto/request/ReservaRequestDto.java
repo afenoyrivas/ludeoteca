@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -23,8 +24,8 @@ public class ReservaRequestDto {
     private Integer cantidad;
 
     @NotNull
-    private SocioEntity socio;
+    private UUID idSocio;
 
     @NotNull
-    private JuegoEntity juego;
+    private UUID idJuego;
 }

@@ -5,6 +5,7 @@ import fenoyagostina.ludeoteca.dto.response.SocioResponseDto;
 import fenoyagostina.ludeoteca.exception.DniYaExisteException;
 import fenoyagostina.ludeoteca.exception.EmailYaExisteException;
 import fenoyagostina.ludeoteca.mapper.SocioMapper;
+import fenoyagostina.ludeoteca.model.ReservaEntity;
 import fenoyagostina.ludeoteca.model.SocioEntity;
 import fenoyagostina.ludeoteca.repository.SocioRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -32,16 +33,22 @@ public class SocioService {
                 .collect(Collectors.toList());
     }
 
-    public SocioResponseDto findByIdPublico(UUID idPublico){
+    SocioEntity findByIdPublico(UUID idPublico){
         return repository.findByIdPublico(idPublico)
-                .map(mapper::toDto)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
-    public SocioResponseDto findByDni(String dni){
+    SocioEntity findByDni(String dni){
         return repository.findByDni(dni)
-                .map(mapper::toDto)
                 .orElseThrow(EntityNotFoundException::new);
+    }
+
+    public SocioResponseDto getByIdPublico(UUID idPublico){
+        return mapper.toDto(findByIdPublico(idPublico));
+    }
+
+    public SocioResponseDto getByDni(String dni){
+        return mapper.toDto(findByDni(dni));
     }
 
     @Transactional

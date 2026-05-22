@@ -5,7 +5,7 @@ import fenoyagostina.ludeoteca.dto.response.ReservaResponseDto;
 import fenoyagostina.ludeoteca.model.ReservaEntity;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {SocioMapper.class, JuegoMapper.class})
 public interface ReservaMapper {
 
     ReservaEntity toEntity(ReservaRequestDto request);

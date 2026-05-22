@@ -35,10 +35,13 @@ public class JuegoService {
                 .collect(Collectors.toList());
     }
 
-    public JuegoResponseDto findByIdPublico(UUID idPublico){
+     JuegoEntity findByIdPublico(UUID idPublico){
         return repository.findByIdPublico(idPublico)
-                .map(mapper::toDto)
                 .orElseThrow(EntityNotFoundException::new);
+    }
+
+    public JuegoResponseDto getByIdPublico(UUID idPublico){
+        return mapper.toDto(findByIdPublico(idPublico));
     }
 
     @Transactional

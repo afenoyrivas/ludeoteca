@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@Validated
 @RestController
 @RequestMapping("/api/juegos")
 public class JuegoController {
@@ -30,13 +29,14 @@ public class JuegoController {
     @GetMapping
     public ResponseEntity<List<JuegoResponseDto>> getAll(
             @RequestParam(required = false) Boolean activo){
+
         List<JuegoResponseDto> juegos = service.findAll(activo);
         return ResponseEntity.status(HttpStatus.OK).body(juegos);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<JuegoResponseDto> getById(@PathVariable @NotNull UUID id){
-        JuegoResponseDto juego = service.findByIdPublico(id);
+    public ResponseEntity<JuegoResponseDto> getById(@PathVariable UUID id){
+        JuegoResponseDto juego = service.getByIdPublico(id);
         return ResponseEntity.status(HttpStatus.OK).body(juego);
     }
 
